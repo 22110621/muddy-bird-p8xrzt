@@ -1,0 +1,193 @@
+:root {
+  --btn-primary-bg: -webkit-linear-gradient(0deg, #351c9a 0%, #2f489b 100%);
+  --btn-primary: white;
+  --btn-primary-border: rgb(125, 77, 165);
+
+  // Search
+  --search-border: #8e54e9;
+  --search-bg: linear-gradient(90deg, rgba(100,65,161,1) 35%, rgba(158,46,172,1) 72%);
+  --search-results-bg: linear-gradient(90deg, rgba(115,46,237,1) 35%, rgba(201,23,223,1) 72%);
+
+  // Dark mode
+  --dark-primary: rgb(49, 49, 49); 
+  --dark-secondary: rgb(83, 79, 79); 
+}
+
+body[data-theme="dark"] { 
+  .progress-pie-chart { 
+    background: var(--dark-primary);
+  }
+
+  .ppc-percents {
+    background: var(--dark-secondary);
+  }
+}
+
+/** Project View Page **/
+@mixin circle($size) {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - #{$size/2});
+    top: calc(50% - #{$size/2});
+    width: $size;
+    height: $size;
+  }
+  
+  $size: 200px;
+  .progress-pie-chart {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: #E5E5E5;
+    position: relative;
+    &.gt-50 {
+      background-color: #81CE97;
+    }
+  }
+  .ppc-progress {
+    @include circle($size);
+    clip: rect(0, $size, $size, #{$size/2});
+    .ppc-progress-fill {
+      @include circle($size);
+      clip: rect(0, #{$size/2}, $size, 0);
+      background: #81CE97;
+      transform: rotate(60deg);
+    }
+    .gt-50 & {
+      clip: rect(0, #{$size/2}, $size, 0);
+      .ppc-progress-fill {
+        clip: rect(0, $size, $size, #{$size/2});
+        background: #E5E5E5;
+      }
+    }
+  }
+  .ppc-percents {
+    @include circle(#{$size/1.15});
+    background: #fff;
+    text-align: center;
+    display: table;
+    span {
+      display: block;
+      font-size: 2.6em;
+      font-weight: bold;
+      color: #81CE97;
+    }
+  }
+  .pcc-percents-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  
+  
+  body {
+    font-family: Arial;
+    background: #f7f7f7;
+  }
+  .progress-pie-chart {
+    margin: 50px auto 0;
+  }
+
+  .container {
+    padding-block: 1rem;
+  }
+
+  .btn-primary {
+    width: 140px;
+    height: 40px;
+    
+    border: 1px solid var(--btn-primary-border);
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary);
+    border-radius: 65px 65px 65px 65px;
+    -webkit-border-radius: 65px 65px 65px 65px;
+    -moz-border-radius: 65px 65px 65px 65px;
+    transition: 200ms ease-in-out;
+
+    &:hover, &:focus {
+      cursor: pointer;
+      scale: 1.1;
+    }
+
+    &:active {
+      background: #351c9a;
+    }
+  }
+
+  /**
+
+  Search Engine
+
+  **/
+
+.search {
+  .search-box-custom {
+    height: 25px;
+    text-align: center;
+    border: 1px solid var(--search-border);
+    background: var(--search-bg);
+    color: white;
+    border-radius: 70px 70px 71px 71px;
+    -webkit-border-radius: 70px 70px 71px 71px;
+    -moz-border-radius: 70px 70px 71px 71px;
+    outline: none;
+    transition: 800ms ease-in-out;
+
+    &::-webkit-input-placeholder {
+      color: #f7f7f7;
+    }
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  .search-results {
+    width: 300px;
+    height: 800px;
+    background: var(--search-results-bg);
+    position: absolute;
+    right: 80px;
+    z-index: 9999;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+      height: 100%;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+       
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background: #427bff;
+      }
+       
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(48, 47, 47);
+      }
+    
+
+      .search-item {
+        display: flex;    
+        align-items: center;
+        text-decoration: none;
+        height: 120px;
+        color: #f7f7f7;
+        justify-content: center;
+
+        &:hover {
+          opacity: .52;
+        }
+      }
+    }
+  }
+}
+
+  /**
+
+  END Search Engine
+
+  **/

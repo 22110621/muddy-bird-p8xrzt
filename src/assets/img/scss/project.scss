@@ -1,0 +1,108 @@
+:root {
+  --goal-target-bg: linear-gradient(90deg, rgba(65,98,161,1) 3%, rgba(16,15,18,1) 72%);
+  --goal-target-bg-dark: linear-gradient(45deg, rgba(199,224,224,1) 0%, rgba(255,250,250,1) 100%);
+  --light-text: white;
+}
+
+body[data-theme="dark"] {
+  .goal__target {
+    color: black;
+    background: var(--goal-target-bg-dark);
+  }
+
+  .goal__progress > * {
+    color: #fff;
+  }
+
+  .goals__title {
+    color: white;
+  }
+}
+
+.project-goals {
+    padding-block: 1rem;
+
+    .goals__title {
+        display: flex;
+        justify-content: center;
+        padding-block: 25px;
+    }
+
+    .goal__target {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        width: 300px;
+        border-radius: 56px 56px 56px 56px;
+        -webkit-border-radius: 56px 56px 56px 56px;
+        -moz-border-radius: 56px 56px 56px 56px;
+        background: var(--goal-target-bg);
+        left: 80%;
+        color: #f7feff;
+        height: 50px;
+        align-items: center;
+    }
+
+    .goal__progress {
+        padding: 1rem;
+
+        $progress_bar__hg: 25px;
+        .progress__bar__container {
+            padding: 1rem;
+
+            &.main {
+                width: 50%;
+                margin: auto;
+                text-align: center;
+            }
+
+            h3 {
+                margin-bottom: 8px;
+            }
+
+            .progress__bar {
+                -webkit-appearance: none;
+                appearance: none;                 
+                cursor: pointer;
+                outline: none;
+                width: 500px;
+                overflow: hidden;
+                border-radius: 16px;
+              }
+              
+              .progress__bar::-webkit-slider-runnable-track {
+                height: $progress_bar__hg;
+                background: #ccc;
+                border-radius: 16px;
+              }
+              
+              .progress__bar::-moz-range-track {
+                height: $progress_bar__hg;
+                background: #ccc;
+                border-radius: 16px;
+              }
+              
+              .progress__bar::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none; 
+                height: $progress_bar__hg;
+                width: 20px;
+                background-color: #fff;
+                border-radius: 50%;
+                border: 2px solid rgb(66, 79, 189);
+                box-shadow: -407px 0 0 400px #8e54e9;
+              }
+              
+              .progress__bar::-moz-range-thumb {
+                height: 15px;
+                width: 15px;
+                background-color: #fff;
+                border-radius: 50%;
+                border: 1px solid #f50;
+                box-shadow: -407px 0 0 400px #f50;
+              }
+              
+              
+        }
+    }    
+}
